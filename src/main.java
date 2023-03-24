@@ -1,6 +1,8 @@
 
 import pckControladores.ListaPacientesController;
+import pckModelos.ListaPacientesDosModel;
 import pckModelos.ListaPacientesModel;
+import pckVistas.frmVistaMedicoDos;
 import pckVistas.frmVistaMedicoUno;
 import pckVistas.frmVistaPrincipal;
 
@@ -17,9 +19,12 @@ import pckVistas.frmVistaPrincipal;
 public class main {
     
     public static void main(String[] args) {
-        frmVistaPrincipal VistaMain = new frmVistaPrincipal(null, true);
-        frmVistaMedicoUno VistaMedUno = new frmVistaMedicoUno(null, true);
+        frmVistaPrincipal VistaMain = new frmVistaPrincipal();
+        frmVistaMedicoUno VistaMedUno = new frmVistaMedicoUno(VistaMain, true);
+        frmVistaMedicoDos VistaMedDos = new frmVistaMedicoDos(VistaMain, true);
         ListaPacientesModel ModeloLista = new ListaPacientesModel();
-        ListaPacientesController ControladorLista = new ListaPacientesController(VistaMain, VistaMedUno, ModeloLista);
+        ListaPacientesDosModel ModeloListaDos = new ListaPacientesDosModel();
+        ListaPacientesController ControladorLista = new ListaPacientesController(VistaMain,
+                VistaMedUno,VistaMedDos, ModeloLista, ModeloListaDos);
     }
 }
