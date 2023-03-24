@@ -134,8 +134,8 @@ public class ListaPacientesController implements ActionListener{
             JOptionPane.showMessageDialog(null, "PACIENTE AGREGADO A LA LISTA!");
         }
         if(e.getSource()== this.VistaMedDos.btnAtenderPaciente){
-            this.ModeloPacientes.DesencolarPacientes();
-            this.ModeloPacientes.EncolarPaciente(this.VistaMain.txtNombres.getText(),
+            this.ModeloPacientesDos.DesencolarPacientesDos();
+            this.ModeloPacientesDos.EncolarPacienteDos(this.VistaMain.txtNombres.getText(),
                     this.VistaMain.txtApellidos.getText(),
                     this.VistaMain.txtEdad.getText());
             
@@ -143,12 +143,12 @@ public class ListaPacientesController implements ActionListener{
             Queue <Pacientes> ListaLocalDos = this.ModeloPacientesDos.ListarPacientesDos();
             
             //RECORRER LA LISTA Y LA ASIGNA EN EL TEXT AREA
-            String cadena = "";
-            for(Pacientes MiListaPacientesUno: ListaLocalDos){
-                cadena = cadena + MiListaPacientesUno.getNombres()+" "+MiListaPacientesUno.getApellidos()
-                        +"    "+MiListaPacientesUno.getEdad()+"\n";
+            String cadenaDos = "";
+            for(Pacientes MiListaPacientesDos: ListaLocalDos){
+                cadenaDos = cadenaDos + MiListaPacientesDos.getNombres()+" "+MiListaPacientesDos.getApellidos()
+                        +"    "+MiListaPacientesDos.getEdad()+"\n";
             }
-            this.VistaMedUno.txtListaMedicoUno.setText(cadena);
+            this.VistaMedDos.txtListaMedicoDos.setText(cadenaDos);
             JOptionPane.showMessageDialog(null, "PACIENTE ATENDIDO!");
         }
     }
