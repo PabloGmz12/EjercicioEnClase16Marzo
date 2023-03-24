@@ -74,9 +74,31 @@ public class ListaPacientesController implements ActionListener{
             String cadena = "";
             for(Pacientes MiListaPacientesUno: ListaLocalUno){
                 cadena = cadena + MiListaPacientesUno.getNombres()+" "+MiListaPacientesUno.getApellidos()
-                        +" --- "+MiListaPacientesUno.getEdad()+"\n";
-                this.VistaMedUno.txtListaMedicoUno.setText(cadena);
+                        +"    "+MiListaPacientesUno.getEdad()+"\n";
             }
+            this.VistaMedUno.txtListaMedicoUno.setText(cadena);
+            this.VistaMain.txtNombres.setText("");
+            this.VistaMain.txtApellidos.setText("");
+            this.VistaMain.txtEdad.setText("");
+            JOptionPane.showMessageDialog(null, "PACIENTE AGREGADO A LA LISTA!");
+        }
+        if(e.getSource()== this.VistaMedUno.btnAtenderPaciente){
+            this.ModeloPacientes.DesencolarPacientes();
+            this.ModeloPacientes.EncolarPaciente(this.VistaMain.txtNombres.getText(),
+                    this.VistaMain.txtApellidos.getText(),
+                    this.VistaMain.txtEdad.getText());
+            
+            //HAY QUE TRAER LA LISTA PACIENTES DESDE EL MODELO
+            Queue <Pacientes> ListaLocalUno = this.ModeloPacientes.ListarPacientes();
+            
+            //RECORRER LA LISTA Y LA ASIGNA EN EL TEXT AREA
+            String cadena = "";
+            for(Pacientes MiListaPacientesUno: ListaLocalUno){
+                cadena = cadena + MiListaPacientesUno.getNombres()+" "+MiListaPacientesUno.getApellidos()
+                        +"    "+MiListaPacientesUno.getEdad()+"\n";
+            }
+            this.VistaMedUno.txtListaMedicoUno.setText(cadena);
+            JOptionPane.showMessageDialog(null, "PACIENTE ATENDIDO!");
         }
         if(e.getSource()== this.VistaMain.btnListaPacientesDos){
             //LEVANTAR LOS BOTONES DEL FORM MEDICO DOS
@@ -102,9 +124,32 @@ public class ListaPacientesController implements ActionListener{
             String cadenaDos = "";
             for(Pacientes MiListaPacientesDos: ListaLocalDos){
                 cadenaDos = cadenaDos + MiListaPacientesDos.getNombres()+" "+MiListaPacientesDos.getApellidos()
-                        +" --- "+MiListaPacientesDos.getEdad()+"\n";
-                this.VistaMedDos.txtListaMedicoDos.setText(cadenaDos);
+                        +"      "+MiListaPacientesDos.getEdad()+"\n";
+                
             }
+            this.VistaMedDos.txtListaMedicoDos.setText(cadenaDos);
+            this.VistaMain.txtNombres.setText("");
+            this.VistaMain.txtApellidos.setText("");
+            this.VistaMain.txtEdad.setText("");
+            JOptionPane.showMessageDialog(null, "PACIENTE AGREGADO A LA LISTA!");
+        }
+        if(e.getSource()== this.VistaMedDos.btnAtenderPaciente){
+            this.ModeloPacientes.DesencolarPacientes();
+            this.ModeloPacientes.EncolarPaciente(this.VistaMain.txtNombres.getText(),
+                    this.VistaMain.txtApellidos.getText(),
+                    this.VistaMain.txtEdad.getText());
+            
+            //HAY QUE TRAER LA LISTA PACIENTES DESDE EL MODELO
+            Queue <Pacientes> ListaLocalDos = this.ModeloPacientesDos.ListarPacientesDos();
+            
+            //RECORRER LA LISTA Y LA ASIGNA EN EL TEXT AREA
+            String cadena = "";
+            for(Pacientes MiListaPacientesUno: ListaLocalDos){
+                cadena = cadena + MiListaPacientesUno.getNombres()+" "+MiListaPacientesUno.getApellidos()
+                        +"    "+MiListaPacientesUno.getEdad()+"\n";
+            }
+            this.VistaMedUno.txtListaMedicoUno.setText(cadena);
+            JOptionPane.showMessageDialog(null, "PACIENTE ATENDIDO!");
         }
     }
 }

@@ -19,7 +19,7 @@ public class ListaPacientesModel {
 public void EncolarPaciente(String name, String ape, String age){
     Pacientes nuevoPaciente = new Pacientes(name, ape, age);
     this.ListaPacientes.add(nuevoPaciente);
-    JOptionPane.showMessageDialog(null, "PACIENTE AGREGADO A LA LISTA!");
+    
 }
 
 public Queue ListarPacientes(){
